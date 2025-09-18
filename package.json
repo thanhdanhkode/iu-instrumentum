@@ -1,0 +1,19 @@
+{
+  "name": "iuryenne",
+  "version": "1.0.0",
+  "description": "The home of IU Ryenne - An open source project to enhance your experience on HCMIU LMS.",
+  "type": "module",
+  "scripts": {
+  },
+  "keywords": [
+    "hcmiu",
+    "iuryenne"
+  ],
+  "workspaces": [
+    "app/*",
+    "packages/*"
+  ],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.16.1"
+}
