@@ -6,7 +6,7 @@ This is a browser extension enhance student experience on International Universi
 
 ### Feature
 
-- [ ] Feature list will coming in future
+- [ ] Features list will coming in future
 
 ### License
 
