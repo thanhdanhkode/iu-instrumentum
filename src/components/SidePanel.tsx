@@ -1,6 +1,5 @@
 import { cn } from "@/utils/tailwind"
 import { Accessor } from "solid-js"
-
 import { X } from "lucide-solid"
 import { Button } from "./ui/button"
 
@@ -13,8 +12,8 @@ const SidePanel = (props: { isSidebarOpen: Accessor<boolean>; onClose: () => voi
         "fixed top-0 right-0 z-[1315131] flex h-screen w-96 transition-all duration-300"
       )}
     >
-      <div class="m-auto mr-3 h-49/50 w-full rounded-md border-l border-neutral-300 bg-white shadow-md">
-        <div class="flex h-12 w-full items-center p-2">
+      <div class="m-auto mr-3 h-49/50 w-full rounded-md border border-neutral-300 bg-white p-3 shadow-md">
+        <div class="flex h-12 w-full items-center">
           <div class="flex items-center gap-2 text-lg font-medium">
             <div class="flex items-center justify-center [&_svg]:size-6">
               <svg xmlns="http://www.w3.org/2000/svg" width={32} height={32} viewBox="0 0 32 32">

@@ -1,7 +1,7 @@
-import { defineContentScript, createShadowRootUi } from "#imports";
-import App from "./App";
-import "./styles/base.css";
-import { render } from "solid-js/web";
+import { defineContentScript, createShadowRootUi } from "#imports"
+import App from "./App"
+import "@/styles/base.css"
+import { render } from "solid-js/web"
 
 export default defineContentScript({
   matches: ["<all_urls>"],
@@ -13,15 +13,15 @@ export default defineContentScript({
       position: "inline",
       anchor: "body",
       onMount: (container, shadow, shadowHost) => {
-        const unmount = render(() => <App />, container);
+        const unmount = render(() => <App />, container)
 
-        return unmount;
+        return unmount
       },
       onRemove: (unmount) => {
-        unmount?.();
+        unmount?.()
       },
-    });
+    })
 
-    ui.mount();
+    ui.mount()
   },
-});
+})

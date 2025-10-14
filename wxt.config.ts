@@ -3,7 +3,7 @@ import tailwindcss from "@tailwindcss/vite"
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
-  modules: ["@wxt-dev/module-solid"],
+  modules: ["@wxt-dev/module-solid", "@wxt-dev/i18n/module"],
   imports: false,
   srcDir: "src",
   webExt: {
@@ -14,6 +14,7 @@ export default defineConfig({
   }),
   manifest: {
     name: "IU Ryenne",
+    default_locale: "vi"
   },
   hooks: {
     "build:manifestGenerated": (wxt, manifest) => {
