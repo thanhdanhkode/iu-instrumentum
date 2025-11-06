@@ -3,7 +3,6 @@ import FloatingButton from "@/components/FloatingButton"
 import { GlobalContextProvider } from "@/contexts/global"
 import { SideContextProvider } from "@/contexts/side"
 import { ThemeContextProvider } from "@/contexts/theme"
-import useClickOutside from "@/hooks/useClickOutSide"
 import { createSignal, ErrorBoundary } from "solid-js"
 import Side from "./components/side"
 
