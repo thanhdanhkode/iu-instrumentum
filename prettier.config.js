@@ -2,7 +2,7 @@
 
 /**
  * @see https://prettier.io/docs/configuration
- * @type {import("prettier").Config}
+ * @type {import("prettier").Config & import("prettier-plugin-tailwindcss").PluginOptions}
  */
 
 const config = {
@@ -11,6 +11,7 @@ const config = {
   semi: false,
   trailingComma: "es5",
   plugins: ["prettier-plugin-tailwindcss"],
+  tailwindFunctions: ["clsx", "cn", "cva"],
 }
 
 export default config
