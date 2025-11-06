@@ -2,49 +2,47 @@ import { browser } from "#imports"
 import { capitalCase } from "case-anything"
 import { PublicPath } from "wxt/browser"
 
-type FontLoaderProps = {
-  fontName: string
-  fontType: "woff" | "woff2" | "ttf" | "otf"
-  parent?: Element
+type FontLoaderFn = {
+  (fontName: string | string[]): void
+  (fontName: string | string[], parent: Element): void
 }
 
 /**
  * Load custom fonts dynamically
  * @param fontName - The name of the font to load
- * @param fontType - The type of the font file
- *
- * @returns A style element that loads the specified font
+ * @param parent - Optional parent element to append the style to
  */
-export const fontLoader = (fontName: string, fontType: "woff" | "woff2" | "ttf" | "otf") => {
-  const fontUrl = browser.runtime.getURL(`/fonts/${fontName}.${fontType}` as PublicPath)
+export const fontLoader: FontLoaderFn = (fontName: string | string[], parent?: Element) => {
   const fontStyleElement = document.createElement("style")
+  const target = parent ?? document.head
+  let fontContent = ""
 
-  fontStyleElement.textContent = `
-    @font-face {
-      font-family: ${capitalCase(fontName)};
-      src: url('${fontUrl}') format('truetype');
-      font-weight: 400;
-      font-style: normal;
+  if (Array.isArray(fontName)) {
+    for (const font of fontName) {
+      for (let index = 1; index < 10; index++) {
+        fontContent += `
+          @font-face {
+            font-family: '${capitalCase(font.replace(/\.(?:ttf|otf|woff2?|woff|eot|svg)(?:\?.*)?$/i, ""))}';
+            src: url('${browser.runtime.getURL(`/fonts/${font}` as PublicPath)}') format('truetype');
+            font-weight: ${index * 100};
+            font-style: normal;
+          }
+      `
+      }
     }
+  } else {
+    for (let index = 1; index < 10; index++) {
+      fontContent = `
+      @font-face {
+        font-family: '${capitalCase(fontName.replace(/\.(?:ttf|otf|woff2?|woff|eot|svg)(?:\?.*)?$/i, ""))}';
+        src: url('${browser.runtime.getURL(`/fonts/${fontName}` as PublicPath)}') format('truetype');
+        font-weight: 100 900;
+        font-style: normal;
+      }
+    `
+    }
+  }
 
-    // @keyframes collapsible-up {
-    //   0% {
-    //     height: var(--kb-collapsible-content-height);
-    //   }
-    //   100% {
-    //     height: 0;
-    //   }
-    // }
-
-    // @keyframes collapsible-down {
-    //   0% {
-    //     height: 0;
-    //   }
-    //   100% {
-    //     height: var(--kb-collapsible-content-height);
-    //   }
-    // }
-  `
-
-  return fontStyleElement
+  fontStyleElement.innerText = fontContent
+  target.appendChild(fontStyleElement)
 }
