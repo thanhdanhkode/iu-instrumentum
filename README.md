@@ -1,12 +1,18 @@
 <!-- markdownlint-disable-file MD001 -->
 
-# IU Ryenne
+# IU Instrumentum
 
 This is a browser extension enhance student experience on International University LMS
 
 ### Feature
 
-- [ ] Features list will coming in future
+- [x] Auto login to Edusoftweb
+- [ ] Bypass captcha
+- [ ] Auto register course
+
+### Roadmap
+
+Roadmap will come soon
 
 ### License
 
