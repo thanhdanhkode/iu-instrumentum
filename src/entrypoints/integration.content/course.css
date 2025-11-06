@@ -1,0 +1,61 @@
+[data-wxt-integrated] > div {
+  margin-block-end: 16px;
+}
+
+[data-wxt-integrated] > div > span {
+  display: block;
+  text-align: right;
+  font-style: italic;
+  font-size: 10px;
+  color: gray;
+  width: 70%;
+  margin-left: auto;
+  margin-block: 5px;
+}
+
+[data-wxt-integrated] table {
+  border-collapse: collapse;
+  border: solid 1px #666666;
+}
+
+[data-wxt-integrated] th,
+[data-wxt-integrated] td {
+  border: solid 1px #666666;
+  padding: 5px 0;
+  vertical-align: middle;
+  background-color: #2d8ece;
+  text-align: center;
+  border-top-style: none;
+  border-right-style: none;
+}
+
+[data-wxt-integrated] thead td {
+  color: white;
+  font-weight: bold;
+}
+
+[data-wxt-integrated] tbody td {
+  background-color: transparent;
+  color: navy;
+  font-size: 12px;
+}
+
+#course-add-portal {
+  position: absolute;
+  left: 26px;
+  z-index: 1000;
+  border: solid 1px #666666;
+  height: 20px;
+  vertical-align: middle;
+  background-color: white;
+}
+
+#course-add-portal button {
+  height: 20px;
+  padding: 0 4px;
+  vertical-align: middle;
+  align-content: center;
+  text-align: center;
+  border: none;
+  border-right: solid 1px #666666;
+}
