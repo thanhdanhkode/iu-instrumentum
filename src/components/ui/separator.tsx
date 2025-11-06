@@ -15,7 +15,7 @@ export const Separator = <T extends ValidComponent = "hr">(props: PolymorphicPro
   return (
     <SeparatorPrimitive
       class={cn(
-        "bg-neutral-200 border-none shrink-0 data-[orientation=horizontal]:h-[1px] data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-[1px]",
+        "bg-border shrink-0 data-[orientation=horizontal]:h-[1px] data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-[1px]",
         local.class
       )}
       {...rest}

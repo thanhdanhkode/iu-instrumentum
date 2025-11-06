@@ -23,7 +23,7 @@ export const SelectTrigger = <T extends ValidComponent = "button">(
   return (
     <SelectPrimitive.Trigger
       class={cn(
-        "ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-9 w-full items-center justify-between rounded-md border border-neutral-200 bg-transparent px-3 py-2 text-sm shadow-sm transition-shadow focus:outline-none focus-visible:ring-[1.5px] disabled:cursor-not-allowed disabled:opacity-50",
+        "border-input ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-9 w-full items-center justify-between rounded-md border bg-transparent px-3 py-2 text-sm shadow-sm transition-shadow focus:outline-none focus-visible:ring-[1.5px] disabled:cursor-not-allowed disabled:opacity-50",
         local.class
       )}
       {...rest}
@@ -52,17 +52,17 @@ export const SelectTrigger = <T extends ValidComponent = "button">(
 
 type selectContentProps<T extends ValidComponent = "div"> = SelectContentProps<T> & {
   class?: string
-  mount?: Node | null
+  mount?: Node | undefined
 }
 
 export const SelectContent = <T extends ValidComponent = "div">(props: PolymorphicProps<T, selectContentProps<T>>) => {
   const [local, rest] = splitProps(props as selectContentProps, ["class", "mount"])
 
   return (
-    <SelectPrimitive.Portal mount={local.mount ?? undefined}>
+    <SelectPrimitive.Portal mount={local.mount}>
       <SelectPrimitive.Content
         class={cn(
-          "data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 relative z-[9999999] min-w-[8rem] overflow-hidden rounded-md border border-neutral-200 bg-white shadow-md",
+          "bg-popover text-popover-foreground data-[expanded]:animate-in data-[closed]:animate-out data-[closed]:fade-out-0 data-[expanded]:fade-in-0 data-[closed]:zoom-out-95 data-[expanded]:zoom-in-95 relative z-[13151315] min-w-[8rem] overflow-hidden rounded-md border border-input shadow-md",
           local.class
         )}
         {...rest}
@@ -81,7 +81,7 @@ export const SelectItem = <T extends ValidComponent = "li">(props: PolymorphicPr
   return (
     <SelectPrimitive.Item
       class={cn(
-        "focus:bg-neutral-200 focus:text-neutral-900 relative flex w-full cursor-default items-center rounded-sm py-1.5 pr-8 pl-2 text-sm outline-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        "focus:bg-accent focus:text-accent-foreground relative flex w-full cursor-default items-center rounded-sm py-1.5 pr-8 pl-2 text-sm outline-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         local.class
       )}
       {...rest}

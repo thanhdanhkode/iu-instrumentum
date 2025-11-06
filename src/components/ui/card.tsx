@@ -1,27 +1,39 @@
 import { cn } from "@/utils/tailwind"
-import { ComponentProps, splitProps } from "solid-js"
+import type { ComponentProps, ParentComponent } from "solid-js"
+import { splitProps } from "solid-js"
 
 export const Card = (props: ComponentProps<"div">) => {
-  const [locale, rest] = splitProps(props, ["class"])
-  return <div class={cn("rounded-md shadow p-2", locale.class)} {...rest}></div>
+  const [local, rest] = splitProps(props, ["class"])
+
+  return <div class={cn("bg-card text-card-foreground rounded-xl border shadow", local.class)} {...rest} />
 }
 
 export const CardHeader = (props: ComponentProps<"div">) => {
-  const [locale, rest] = splitProps(props, ["class"])
-  return <div class={cn("font-bold p-2", locale.class)} {...rest}></div>
+  const [local, rest] = splitProps(props, ["class"])
+
+  return <div class={cn("flex flex-col space-y-1.5 p-6", local.class)} {...rest} />
 }
 
-export const CardTitle = (props: ComponentProps<"h1">) => {
-  const [locale, rest] = splitProps(props, ["class"])
-  return <div class={cn("text-lg font-medium p-2", locale.class)} {...rest}></div>
+export const CardTitle: ParentComponent<ComponentProps<"h1">> = (props) => {
+  const [local, rest] = splitProps(props, ["class"])
+
+  return <h1 class={cn("leading-none font-semibold tracking-tight", local.class)} {...rest} />
+}
+
+export const CardDescription: ParentComponent<ComponentProps<"h3">> = (props) => {
+  const [local, rest] = splitProps(props, ["class"])
+
+  return <h3 class={cn("text-muted-foreground text-sm", local.class)} {...rest} />
 }
 
 export const CardContent = (props: ComponentProps<"div">) => {
-  const [locale, rest] = splitProps(props, ["class"])
-  return <div class={cn("p-2", locale.class)} {...rest}></div>
+  const [local, rest] = splitProps(props, ["class"])
+
+  return <div class={cn("p-6 pt-0", local.class)} {...rest} />
 }
 
 export const CardFooter = (props: ComponentProps<"div">) => {
-  const [locale, rest] = splitProps(props, ["class"])
-  return <div class={cn("p-2", locale.class)} {...rest}></div>
+  const [local, rest] = splitProps(props, ["class"])
+
+  return <div class={cn("flex items-center p-6 pt-0", local.class)} {...rest} />
 }

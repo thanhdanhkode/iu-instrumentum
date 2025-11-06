@@ -13,12 +13,14 @@ import { cva } from "class-variance-authority"
 import type { ValidComponent, VoidProps } from "solid-js"
 import { splitProps } from "solid-js"
 
-type tabsProps<T extends ValidComponent = "div"> = TabsRootProps<T> & { class?: string }
+type tabsProps<T extends ValidComponent = "div"> = TabsRootProps<T> & {
+  class?: string
+}
 
 export const Tabs = <T extends ValidComponent = "div">(props: PolymorphicProps<T, tabsProps<T>>) => {
   const [local, rest] = splitProps(props as tabsProps, ["class"])
 
-  return <TabsPrimitive class={cn("", local.class)} {...rest} />
+  return <TabsPrimitive class={cn("w-full data-[orientation=vertical]:flex", local.class)} {...rest} />
 }
 
 type tabsListProps<T extends ValidComponent = "div"> = TabsListProps<T> & {
@@ -31,7 +33,7 @@ export const TabsList = <T extends ValidComponent = "div">(props: PolymorphicPro
   return (
     <TabsPrimitive.List
       class={cn(
-        "relative flex w-full gap-1 rounded-md p-2 shadow data-[orientation=horizontal]:items-center data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch",
+        "bg-muted text-muted-foreground relative flex w-full rounded-lg p-1 data-[orientation=horizontal]:items-center data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch",
         local.class
       )}
       {...rest}
@@ -67,7 +69,7 @@ export const TabsTrigger = <T extends ValidComponent = "button">(props: Polymorp
   return (
     <TabsPrimitive.Trigger
       class={cn(
-        "peer relative z-10 inline-flex h-7 w-full items-center justify-center rounded-md bg-neutral-200 px-3 py-1 text-sm font-medium whitespace-nowrap text-neutral-500 transition-colors outline-none disabled:pointer-events-none disabled:opacity-50 data-[selected]:bg-neutral-950 data-[selected]:text-white has-[svg]:[&_svg]:size-4",
+        "peer data-[selected]:text-foreground relative z-10 inline-flex h-7 w-full items-center justify-center rounded-md px-3 py-1 text-sm font-medium whitespace-nowrap transition-colors outline-none disabled:pointer-events-none disabled:opacity-50",
         local.class
       )}
       {...rest}
@@ -79,9 +81,9 @@ const tabsIndicatorVariants = cva("absolute transition-all duration-200 outline-
   variants: {
     variant: {
       block:
-        "peer-focus-visible:ring-ring peer-focus-visible:ring-offset-background rounded-md bg-neutral-950 shadow peer-focus-visible:ring-[1.5px] peer-focus-visible:ring-offset-2 peer-focus-visible:outline-none data-[orientation=horizontal]:bottom-1 data-[orientation=horizontal]:left-0 data-[orientation=horizontal]:h-[calc(100%-0.5rem)] data-[orientation=vertical]:top-0 data-[orientation=vertical]:right-1 data-[orientation=vertical]:w-[calc(100%-0.5rem)]",
+        "bg-background peer-focus-visible:ring-ring peer-focus-visible:ring-offset-background rounded-md shadow peer-focus-visible:ring-[1.5px] peer-focus-visible:ring-offset-2 peer-focus-visible:outline-none data-[orientation=horizontal]:bottom-1 data-[orientation=horizontal]:left-0 data-[orientation=horizontal]:h-[calc(100%-0.5rem)] data-[orientation=vertical]:top-0 data-[orientation=vertical]:right-1 data-[orientation=vertical]:w-[calc(100%-0.5rem)]",
       underline:
-        "bg-neutral-500 data-[orientation=horizontal]:-bottom-[1px] data-[orientation=horizontal]:left-0 data-[orientation=horizontal]:h-[2px] data-[orientation=vertical]:top-0 data-[orientation=vertical]:-right-[1px] data-[orientation=vertical]:w-[2px]",
+        "bg-primary data-[orientation=horizontal]:-bottom-[1px] data-[orientation=horizontal]:left-0 data-[orientation=horizontal]:h-[2px] data-[orientation=vertical]:top-0 data-[orientation=vertical]:-right-[1px] data-[orientation=vertical]:w-[2px]",
     },
   },
   defaultVariants: {
